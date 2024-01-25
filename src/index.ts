@@ -18,15 +18,17 @@ const processedTelephonySessionIds = new Set();
 
 const main = async () => {
   await rc.authorize({
-    username: process.env.RINGCENTRAL_USERNAME!,
-    extension: process.env.RINGCENTRAL_EXTENSION,
-    password: process.env.RINGCENTRAL_PASSWORD!,
+    jwt: process.env.RINGCENTRAL_JWT_TOKEN!,
   });
 
   const softphone = new Softphone({
     username: process.env.SIP_INFO_USERNAME,
     password: process.env.SIP_INFO_PASSWORD,
     authorizationId: process.env.SIP_INFO_AUTHORIZATION_ID,
+  });
+  await softphone.register();
+  softphone.on('invite', async (inviteMessage) => {
+    await softphone.answer(inviteMessage);
   });
 
   const pubnubExtension = new PubNubExtension();
