@@ -213,6 +213,11 @@
     axios "^1.6.5"
     qs "^6.11.2"
 
+"@rc-ex/debug@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@rc-ex/debug/-/debug-1.1.7.tgz#73233b0cc8607077b1311b0b00b17a521a084620"
+  integrity sha512-zbstE9nLQxtMznfLyTHcYuyK7vYEpLr96tm04J61ctWWnNWv+xjXSKMuXJxQibDxW5N50X9SZBXRgJ2Lx0A9FQ==
+
 "@rc-ex/ws@^1.1.7":
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/@rc-ex/ws/-/ws-1.1.7.tgz#c77137b9840657758fb42a33d00eccc35570f365"
@@ -1278,10 +1283,10 @@ rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
-ringcentral-softphone@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/ringcentral-softphone/-/ringcentral-softphone-0.8.3.tgz#2c9b929cb188616da3539e7e985ee2a6217192ce"
-  integrity sha512-w8wTkzyPo9C06Jp4FxFeFb6VlFnGQ9RYjNR0EshdKKEzOSeVlg47ghEwYZK8EsOkZLlQyFGRYKVYRsb6Nutbcw==
+ringcentral-softphone@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/ringcentral-softphone/-/ringcentral-softphone-0.8.5.tgz#8ed9bc8fc995d8e7a4a072a9ebdf083fef1f6c88"
+  integrity sha512-rB55RbYurJlTyxKzTo6zOjp98qTmOkgXZ5hOyFzFynS20Hsk2APX6q5ojZexv987MeC9w6AAQ6YprUz4lKKWQA==
   dependencies:
     "@rc-ex/core" "^1.3.5"
     wait-for-async "^0.6.1"

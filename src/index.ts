@@ -1,7 +1,8 @@
 import RingCentral from '@rc-ex/core';
 import type CallSessionObject from '@rc-ex/core/lib/definitions/CallSessionObject';
 import type ExtensionTelephonySessionsEvent from '@rc-ex/core/lib/definitions/ExtensionTelephonySessionsEvent';
-import PubNubExtension from '@rc-ex/ws';
+import WebSocketExtension from '@rc-ex/ws';
+import DebugExtension from '@rc-ex/debug';
 import waitFor from 'wait-for-async';
 import Softphone from 'ringcentral-softphone';
 
@@ -31,7 +32,12 @@ const main = async () => {
     await softphone.answer(inviteMessage);
   });
 
-  const pubnubExtension = new PubNubExtension();
+  // display debugging information
+  const debugExtension = new DebugExtension();
+  await rc.installExtension(debugExtension);
+  softphone.enableDebugMode();
+
+  const pubnubExtension = new WebSocketExtension();
   await rc.installExtension(pubnubExtension);
   await pubnubExtension.subscribe(
     ['/restapi/v1.0/account/~/extension/~/telephony/sessions'],
@@ -55,7 +61,7 @@ const main = async () => {
             console.log(JSON.stringify(conferenceSession, null, 2));
             conferenceSessionId = conferenceSession.id!;
             // make a phone call to the conference voiceCallToken
-            softphone.call(conferenceSession.voiceCallToken as unknown as number);
+            await softphone.call(conferenceSession.voiceCallToken as unknown as number);
           }
           await waitFor({
             interval: 1000,
